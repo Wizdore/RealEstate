@@ -118,7 +118,7 @@ public class Login extends javax.swing.JFrame {
                 /*if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }*/
+                }*/ //Default look and feel
                 UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
             }
         } catch (ClassNotFoundException ex) {
