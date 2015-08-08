@@ -12,8 +12,9 @@ import javax.swing.UIManager;
 
 public class Login extends javax.swing.JFrame {
     
-    Connection conn = null;
-    Statement stmt = null;
+    public static Connection conn = null;
+    public static Statement stmt = null;
+    public static int userID;
     
     public Login() {
         initComponents();
@@ -97,6 +98,7 @@ public class Login extends javax.swing.JFrame {
                     + txtPass.getText()+"'");
             if(rs.next()) 
             {
+                userID = Integer.parseInt(txtID.getText());
                 UserDash userDash = new UserDash();
                 setVisible(false);
                 userDash.setVisible(true);

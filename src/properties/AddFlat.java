@@ -4,11 +4,12 @@ import java.sql.Connection;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import realEstate.Connect;
+import realEstate.Login;
+
 
 public class AddFlat extends javax.swing.JFrame {
 
     //Connection conn = null;
-    Statement stmt = null;
 
     public AddFlat() {
         initComponents();
@@ -364,6 +365,23 @@ public class AddFlat extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addToDB(Flat a)
+    {
+        String AddQuery = "";
+        try
+        {
+            Login.conn = Connect.ConnectDB();
+            Login.stmt = Login.conn.createStatement();
+            
+            AddQuery = String.format("","");
+            Login.stmt.executeQuery(AddQuery);
+            JOptionPane.showMessageDialog(null, AddQuery + " \n success.");
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null,AddQuery + "\n\n" + ex);
+        }
+    }
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         Flat f = new Flat();
         try {
@@ -402,6 +420,9 @@ public class AddFlat extends javax.swing.JFrame {
             f.parkings = Integer.parseInt(txtParkings.getText());
             f.totalFloor = Integer.parseInt(txtTotalFloors.getText());
             f.sizeSqft = Integer.parseInt(txtSize.getText());
+            
+            addToDB(f);
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
