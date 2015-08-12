@@ -35,12 +35,13 @@ public class Login extends javax.swing.JFrame {
         btnSubmit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Log In");
 
         jLabel1.setText("ID:");
 
         jLabel2.setText("Password:");
 
-        cmbxUserGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbxUserGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "User", "Administrator" }));
 
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -79,9 +80,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cmbxUserGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
                 .addComponent(btnSubmit)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -93,9 +94,10 @@ public class Login extends javax.swing.JFrame {
                
         try {
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select id,password from users "
+            String sql = "select id,password,usergroup from users "
                     + "where id = '" + txtID.getText() + "' and password = '"
-                    + txtPass.getText()+"'");
+                    + txtPass.getText()+"' and usergroup = '"+ (cmbxUserGroup.getSelectedIndex()+1) +"'";
+            ResultSet rs = stmt.executeQuery(sql);
             if(rs.next()) 
             {
                 userID = Integer.parseInt(txtID.getText());

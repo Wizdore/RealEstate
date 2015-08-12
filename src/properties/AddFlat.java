@@ -195,7 +195,7 @@ public class AddFlat extends javax.swing.JFrame {
         f.setBooleans(cbxGas.isSelected(), cbxWater.isSelected(), cbxElect.isSelected(), cbxLift.isSelected(), cbxGenerator.isSelected());
         f.setdoubles(Double.parseDouble(txtPrice.getText()), Double.parseDouble(txtSize.getText()));
         if(f.runQuery())
-            JOptionPane.showMessageDialog(null, "Flat added.");
+            JOptionPane.showMessageDialog(null, "Flat added Successfully.");
         else JOptionPane.showMessageDialog(null, "Something went wrong.\nConsult The Software Developer.");
         UserDash ud = new UserDash();
         ud.setVisible(true);
