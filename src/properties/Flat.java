@@ -1,33 +1,58 @@
 package properties;
-import java.sql.Statement;
-import realEstate.*;
+
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import realEstate.Login;
+
 public class Flat
 {
+    private String country,city,street,details;
+    private double price,size;
+    private boolean gas,water,elect,lift,generator;
+    
+    private int sellerID,buyerID;
     Flat()
     {
-        Statement stmt = null;
+        buyerID = 0;
+        sellerID = Login.userID;
     }
-    String country,city,street;
     
-    int sizeSqft,totalFloor,attachedBaths,commonBaths,beds,
-            parkings,Balconies,floorNo;
-    
-    
-    String projectType,floorType;
-    
-    boolean gas,electricity,wasa,intercom,ccTv,cableConnection,internet,roofTopGarden,
-            generator,lift,communityHall,gym,swimingPool;
-    
-    boolean fireExting,fireAlarm,emergencyExit;
-    
-    int salePrice,utilityCost,parkingCost;
-    
-    String description;
-    
-    
-    
-    public boolean addFlat()
+    public void setStrings(String co,String ci,String str, String det)
     {
-        return true;
+        country = co;
+        city = ci;
+        street = str;
+        details = det;
+    }
+    public void setBooleans(boolean g,boolean w,boolean e,boolean l, boolean gen)
+    {
+        gas = g;
+        water = w;
+        elect = e;
+        lift = l;
+        generator = gen;
+    }
+    public void setdoubles(double p,double s)
+    {
+        price = p;
+        size = s;
+    }
+    public boolean runQuery()
+    {
+        String sql = "";
+        try {
+            sql =   "INSERT INTO flats(\"country\",\"city\","
+                    + "\"street\",\"details\",\"price\",\"size\",\"gas\",\"water\","
+                    + "\"elect\",\"lift\",\"generator\",\"SellerID\",\"BuyerID\")"
+                    + " VALUES (\""+country+"\",\""+city+"\",\""+street+"\","
+                    + "\""+details+"\",\""+price+"\",\""+size+"\",\""+gas+"\",\""+water+"\","
+                    + "\""+elect+"\",\""+lift+"\",\""+generator+"\",\""+sellerID+"\","
+                    + "\""+buyerID+"\")";
+            Login.stmt.execute(sql);
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, sql);
+            return false;
+        }
     }
 }
