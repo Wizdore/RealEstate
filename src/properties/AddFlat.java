@@ -61,7 +61,9 @@ public class AddFlat extends javax.swing.JFrame {
         jLabel7.setText("Details");
 
         txtDetails.setColumns(20);
+        txtDetails.setLineWrap(true);
         txtDetails.setRows(5);
+        txtDetails.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtDetails);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -120,7 +122,7 @@ public class AddFlat extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
