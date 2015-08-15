@@ -1,5 +1,6 @@
-package properties;
+package users;
 
+import properties.*;
 import java.sql.Connection;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -8,11 +9,12 @@ import realEstate.Login;
 import users.UserDash;
 
 
-public class AddFlat extends javax.swing.JFrame {
+
+public class Modifyprop extends javax.swing.JFrame {
 
     //Connection conn = null;
 
-    public AddFlat() {
+    public Modifyprop() {
         initComponents();
         //conn = Connect.ConnectDB();
 
@@ -192,16 +194,7 @@ public class AddFlat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        Flat f = new Flat();
-        f.setStrings(txtCountry.getText(), txtCity.getText(), txtStreet.getText(), txtDetails.getText());
-        f.setBooleans(cbxGas.isSelected(), cbxWater.isSelected(), cbxElect.isSelected(), cbxLift.isSelected(), cbxGenerator.isSelected());
-        f.setdoubles(Double.parseDouble(txtPrice.getText()), Double.parseDouble(txtSize.getText()));
-        if(f.runQuery())
-            JOptionPane.showMessageDialog(null, "Flat added Successfully.");
-        else JOptionPane.showMessageDialog(null, "Something went wrong.\nConsult The Software Developer.");
-        UserDash ud = new UserDash();
-        ud.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     public static void main(String args[]) {
@@ -218,20 +211,23 @@ public class AddFlat extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddFlat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Modifyprop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddFlat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Modifyprop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddFlat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Modifyprop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddFlat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Modifyprop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddFlat().setVisible(true);
+                new Modifyprop().setVisible(true);
             }
         });
     }
